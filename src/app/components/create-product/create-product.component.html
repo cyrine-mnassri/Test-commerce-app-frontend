@@ -1,0 +1,166 @@
+<div class="card mt-50 mb-50">
+  <div class="card-title mx-auto"> Admin dashboard </div>
+
+  <form #adminForm="ngForm" (ngSubmit)="onSaveNewProduct(adminForm)"> <span id="card-header">Create new product</span>
+    
+    
+    <div *ngIf="isEmpty && !isOK" class="alert alert-danger">{{ warning }}</div>
+    <div *ngIf="isEmpty && isOK" class="alert alert-success">{{ warning }}</div>
+     
+    
+    <div class="row-1 form-group">
+          <div class="row row-2"> <span id="card-inner">Product Name</span> </div>
+          <div class="row row-2"> 
+            <input
+            type="text"
+            name="prod_name"
+            class="form-control"
+            id="prod_name"
+            ngModel
+            #prod_name="ngModel"
+            placeholder="Product Name"
+          />  
+          </div>
+      </div>
+
+
+      <div class="row-1 form-group">
+        <div class="row row-2"> <span id="card-inner">Product Code</span> </div>
+        <div class="row row-2"> 
+             <!-- product code -->
+              <input
+                type="text"
+                name="productCode"
+                class="form-control"
+                id="productCode"
+                ngModel
+               #productCode="ngModel"
+                placeholder="Product Code"
+              />
+        
+        </div>
+    </div>
+
+
+    <div class="row-1 form-group">
+      <div class="row row-2"> <span id="card-inner">Product price</span> </div>
+      <div class="row row-2"> 
+        <input
+        type="number"
+        name="price"
+        class="form-control"
+        id="price"
+        ngModel
+        #price="ngModel"
+        placeholder="Price"
+      />
+      </div>
+  </div>
+
+
+  <div class="row-1 form-group">
+    <div class="row row-2"> <span id="card-inner">Product quantity</span> </div>
+    <div class="row row-2"> 
+      <input
+      type="number"
+      name="quantity"
+      class="form-control"
+      id="quantity"
+      ngModel
+      #quantity="ngModel"
+      placeholder="Quantity"
+    />
+    </div>
+</div>
+
+
+<div class="row-1 form-group">
+  <div class="row row-2"> <span id="card-inner">Product model</span> </div>
+  <div class="row row-2"> 
+    <input
+    type="text"
+    name="model"
+    class="form-control"
+    id="model"
+    ngModel
+    #model="ngModel"
+    placeholder="Product model"
+  />
+  </div>
+</div>
+
+<div class="row-1 form-group">
+  <div class="row row-2"> <span id="card-inner">Product brand</span> </div>
+  <div class="row row-2"> 
+    <input
+    type="text"
+    name="brand"
+    class="form-control"
+    id="brand"
+    ngModel
+    #brand="ngModel"
+    placeholder="Product brand"
+    />
+  </div>
+</div>
+
+
+<div class="row-1 form-group">
+  <div class="row row-2"> <span id="card-inner">Product category</span> </div>
+  <div class="row row-2"> 
+    <select
+    type="text"
+    name="category"
+    class="form-control"
+    id="category"
+    ngModel
+    #category="ngModel"
+  >
+    <option *ngFor="let category of categories" [value]="category.cat_name">{{ category.cat_name }}</option>
+  </select>
+  </div>
+</div>
+
+
+<div class="row-1 form-group">
+  <div class="row row-2"> <span id="card-inner">Please upload only files of type .JPEG, .JPG, or .PNG</span> </div>
+  <div class="row row-2"> 
+    <input
+    type="file"
+    (change)="onFileSelected($event)"
+    (click)="onFileSelected($event)"
+    style="display:none"
+    #pickedFile
+  />
+  <button type="button" (click)="pickedFile.click()" class="btn btn-dark">
+    <fa name="image" class="mr-2"></fa>Pick File
+  </button>
+  <span class="ml-3">{{ selectedFile?.name  }}</span>
+  </div>
+</div>
+
+      <button type="submit" class="btn d-flex mx-auto"><b>Add product</b></button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

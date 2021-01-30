@@ -1,0 +1,46 @@
+<!-- Top menu -->
+<nav class="navbar fixed-top  scrolling-navbar navbar-expand-lg navbar-dark ">
+    <div class="container">
+        <a class="navbar-brand" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" routerLink="/home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" routerLink="/shop">Products</a>
+                </li>
+
+               <!-- <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle" routerLink="/shop" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                    <div class="dropdown-menu"  >
+                        <div *ngFor="let category of categories" >
+                            <div class="dropdown-divider"></div>
+                        <a class="dropdown-item "  routerLink="/category">{{category.name}}</a>
+                    </div>
+                        </div>
+                </li>
+                       -->
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item " routerLink="/admin-dashborard">ALL products</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" routerLink="/create-product">New product</a>
+                    
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" routerLink="/create-category">Categories</a>
+                    
+
+                      
+                    </div>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>

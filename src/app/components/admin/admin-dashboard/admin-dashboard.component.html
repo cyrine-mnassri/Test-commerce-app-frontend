@@ -1,0 +1,60 @@
+<div *ngIf="products"  class="card mt-50 mb-50">
+  <div class="card-title mx-auto"> Admin dashborard </div>
+
+
+  <div class="row mt-5">
+    <div class="input-group">
+   
+            <input type="hidden" name="search_param" value="all" id="search_param">         
+            <input type="text" class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search Product By Barcode ">
+           </div>
+        </div>
+
+
+
+
+  <span id="card-header">List of products</span>
+<table>
+	<thead>
+	<tr>
+    <th >#</th>
+    <th >Barcode</th>
+    <th >Name</th>
+    <th >Quantity</th>
+    <th >Price</th>
+    <th >Update</th>
+    <th >Remove</th>
+	</tr>
+	</thead>
+	<tbody *ngFor="let product of products | filterBycode: searchText : 'productCode' ; let i = index ">
+	<tr>
+    <td >
+      <h6 class="title text-truncate"> {{i}}</h6>
+    </td>
+    <td >
+      <h6 class="title text-truncate"> {{product.productCode}}</h6>
+    </td>
+    <td >
+      <h6 class="title text-truncate">{{product.prod_name}} </h6>
+    </td>
+    <td > 
+      <h6 class="title text-truncate">{{product.price}}</h6>
+    </td>
+    <td > 
+      <h6 class="title text-truncate"> {{product.quantity}}</h6>    
+    </td>
+    <td > 
+    
+      <a  class="btn btn-outline-primary  btn-round " [routerLink]="['/update-product/', product.id]" > update </a> 
+  
+    </td>
+
+    <td>
+      <a  class="btn btn-outline-danger btn-round " (click)="onDeleteProduct(product.id,i)">  Remove</a>
+
+    </td>
+	</tr>
+
+	</tbody>
+</table>
+</div>

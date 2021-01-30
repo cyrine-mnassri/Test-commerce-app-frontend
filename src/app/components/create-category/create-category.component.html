@@ -1,0 +1,62 @@
+
+<div class="card mt-50 mb-50">
+  <div class="card-title mx-auto"> Admin dashborard </div>
+  <strong>Can't find the category you need?</strong><br /><strong>Add a new one to the scroll list!</strong>
+  <form #categoryForm="ngForm" (ngSubmit)="onAddCategory(categoryForm)"> 
+    <div *ngIf="errorMsg"  class="alert alert-danger">{{ warning }}</div>
+    <div *ngIf="successMsg" class="alert alert-success">{{ warning }}</div>
+      <div class="row-1">
+          <div class="row row-2"> <span id="card-inner">Category name</span> </div>
+          <div class="row row-2">
+            <input
+            type="text"
+            name="category_add"
+            id="category_add"
+            placeholder="New Category"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': category_add.errors && category_add.touched }"
+            ngModel
+            #category_add="ngModel"
+            required
+            minlength="2"
+          />    
+          <div [hidden]="!category_add.errors?.required" class="invalid-feedback">Category field is required</div>
+          <div [hidden]="!category_add.errors?.minlength" class="invalid-feedback">
+            Category must be at least 2 characters
+          </div>        
+            </div>
+      </div>
+
+      <button type="submit" class="btn d-flex mx-auto"><b>Add Category</b></button>
+  </form>
+
+</div>
+<div class="card mt-50 mb-50">
+  <strong class="strong">Category List</strong>
+
+  <table>
+    <thead >
+      <tr >
+        <th >#</th>
+        <th >CategoryID</th>
+        <th >Name</th>
+        <th >Action</th>
+
+      </tr>
+    </thead>
+    <tbody  *ngFor="let category of categories; let i = index ">
+      <tr class="">
+        <td >{{i}}</td>
+        <td> {{category.id}}</td>
+        <td >{{category.cat_name}}</td>
+        <td >
+          <a  class="btnremove btn  d-flex mx-auto" (click)="remove(category,i)">  Remove</a>
+        </td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
+
+
+
+

@@ -1,0 +1,77 @@
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="grid search">
+          <div class="grid-body">
+            <div class="row">
+              <div class="col-md-3">
+                <h2 class="grid-title"> Filter</h2>
+                <hr>
+                <h5>By category</h5>
+                <br>
+                <li class="list-group-item" (click)="onShowAllProducts()"  >Show All Products</li>
+
+                <ul class="list-group"  *ngFor="let category of categories" >
+
+                  <li class="list-group-item" (click)="onCategorySelected(category.cat_name)"  >{{category.cat_name}}</li>
+                  
+                </ul>                
+                <div class="padding"></div>
+                
+                <div class="padding"></div>
+              </div>
+          
+              <div class="col-md-9">
+                <h2> Result</h2>
+                <hr>
+                <div class="input-group">
+                  <input type="text" #searchProducts class="form-control" placeholder="Search for products...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" (click)="onSearch(searchProducts.value)" type="button"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+                <p>Showing all results matching {{searchProducts.value}}</p>
+                
+                <div class="padding"></div>
+                
+          
+                   
+            <div *ngIf="products" >
+
+            <div *ngIf="products.length == 0" class="text-center m-4">
+              <h3>There are no products</h3>
+              <button class="btn btn-outline-primary" (click)="onShowAllProducts()">Go back to full product list</button>
+            </div>
+          </div>
+
+          <div  class="row p-2 bg-light border rounded mt-2" *ngFor="let product of (products | filter: filteredStatus:'prod_name')" >
+
+            <div class="col-md-3 mt-1">
+              <img class="img-fluid img-responsive rounded product-image" [src]="product.imageUrl" [alt]="product.prod_name">
+            </div>
+            <div class="col-md-6 mt-1">
+                <h5>{{product.prod_name}}</h5>
+
+                <p class="text-justify text-truncate para mb-0"> {{product.model}}<br><br></p>
+            </div>
+            <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                <div class="d-flex flex-row align-items-center">
+                    <h4 class="mr-1">{{product.price}} DT</h4>
+                </div>
+
+
+                <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button" [routerLink]="['/product-details/', product.id]">Details</button>
+                  <button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to Cart</button></div>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+

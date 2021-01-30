@@ -1,0 +1,75 @@
+
+  
+  
+  <div class="card mt-50 mb-50">
+    <div class="card-title mx-auto" > Admin dashboard </div>
+  <div *ngFor="let product of products">
+
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()"> <span id="card-header">Update  product</span>
+    
+        <div class="row-1 form-group">
+              <div class="row row-2"> <span id="card-inner">Product price</span> </div>
+              <div class="row row-2"> 
+                <input
+                type="number"
+                name="price"
+                class="form-control"
+                placeholder={{product.price}}
+                formControlName="price"
+                [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+              />
+             
+              <div *ngIf="submitted && f.price.errors.required" class="invalid-feedback">
+                price is required
+            </div>
+            <div *ngIf="submitted && f.price.errors.min" class="invalid-feedback">
+                Product price must be higher then 0
+               </div>
+
+         
+              
+        </div>
+          </div>
+  
+        <div class="row-1 form-group">
+          <div class="row row-2"> <span id="card-inner">Product quantity</span> </div>
+          <div class="row row-2"> 
+            <input
+            type="number"
+            name="quantity"  
+            class="form-control"
+            placeholder={{product.quantity}}
+            formControlName="quantity"
+            [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"
+
+          />
+          <div *ngIf="submitted && f.quantity.errors.required" class="invalid-feedback">
+            quantity is required
+        </div>
+        <div *ngIf="submitted && f.quantity.errors.min" class="invalid-feedback">
+            Product quanity must be higher then 0
+           </div>
+
+          </div>
+      </div>
+    
+
+    
+          <button type="submit" class="btn d-flex mx-auto"><b>Update product</b></button>
+      </form>
+
+
+    </div>
+
+
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
