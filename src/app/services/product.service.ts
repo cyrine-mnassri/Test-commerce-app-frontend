@@ -5,7 +5,7 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({ providedIn: "root" })
 export class ProductService {
 
-  private url = "http://localhost:4000/shop";
+  private url = "http://192.168.43.188:4000/shop";//Put here your local IP @
 
   private products = new BehaviorSubject(null);
   currentProducts = this.products.asObservable();
@@ -18,9 +18,6 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
- 
- 
- 
 
   displayedCategories(categories) {
     this.categories.next(categories);
@@ -71,7 +68,7 @@ export class ProductService {
   }
 
   UpdateProduct(id, data){
-    let url = `http://localhost:4000/shop/update/${id}`;
+    let url = `http://192.168.43.188:4000/shop/update/${id}`;//Put here your local IP @
     return this.http.put<any>(url, data)
   }
 }
